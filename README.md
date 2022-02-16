@@ -31,9 +31,49 @@ use Toast\XMLFeed;
 $feed = Feed::get($url = null, $xmlPath = null, $cacheLifetime = 300, $asArray = false, $flushCache = false);
 ```
 
-By default an ArrayList will be returned, which can be rendered directed into a template:
+By default an ArrayList will be returned, which can be rendered directed into a template.
 
-Note: check the raw contents of the XML feed to identify fields names.
+Note: you must check the raw contents of the XML feed to identify fields names.
+
+## Example
+
+XML:
+
+```xml
+<RSS>
+  <Items>
+    <Item>
+      <Headline>Sed in viverra dui. Nullam vel congue massa.</Headline>
+      <Summary>Ut id nisi vitae massa consectetur dictum quis sed sapien. Donec vel sodales tortor, at euismod turpis</Summary>
+    </Item>
+    <Item>
+      <Headline>Aliquam dictum finibus magna</Headline>
+      <Summary>Cras mattis non elit sit amet vulputate. Nunc at metus sed sapien placerat tempor ac non eros.</Summary>
+    </Item>
+  </Items>
+</RSS>
+
+```
+
+PHP:
+
+```php
+use Toast\XMLFeed;
+
+...
+
+class PageController extends ContentController 
+{
+
+  public function getNewsFeed() 
+  {
+    return Feed::get('https://newswebsite.url/news-feed.xml', 'RSS.Items');
+  }
+  
+}      
+```
+
+Template:
 
 ```html
 <% loop $Feed %> 
