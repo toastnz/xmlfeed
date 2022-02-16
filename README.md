@@ -44,11 +44,11 @@ XML:
   <Items>
     <Item>
       <Headline>Sed in viverra dui. Nullam vel congue massa.</Headline>
-      <Summary>Ut id nisi vitae massa consectetur dictum quis sed sapien. Donec vel sodales tortor, at euismod turpis</Summary>
+      <Summary>Ut id nisi vitae massa consectetur dictum quis sed sapien. At euismod turpis</Summary>
     </Item>
     <Item>
       <Headline>Aliquam dictum finibus magna</Headline>
-      <Summary>Cras mattis non elit sit amet vulputate. Nunc at metus sed sapien placerat tempor ac non eros.</Summary>
+      <Summary>Cras mattis non elit sit amet vulputate. Nunc at metus sed sapien eros.</Summary>
     </Item>
   </Items>
 </RSS>
@@ -64,19 +64,17 @@ use Toast\XMLFeed;
 
 class PageController extends ContentController 
 {
-
   public function getNewsFeed() 
   {
     return Feed::get('https://newswebsite.url/news-feed.xml', 'RSS.Items');
-  }
-  
+  }  
 }      
 ```
 
 Template:
 
 ```html
-<% loop $Feed %> 
+<% loop $NewsFeed %> 
   <h1>$Headline.XML</h1>
   <p>$Summary.XML</p>
 <% end_loop %>
