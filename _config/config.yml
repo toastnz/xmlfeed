@@ -1,0 +1,13 @@
+---
+Name: toastxmlfeed
+---
+
+SilverStripe\Core\Injector\Injector:
+  Psr\SimpleCache\CacheInterface.toastXMLFeedCache:
+    factory: SilverStripe\Core\Cache\CacheFactory
+    constructor:
+      namespace: "toastXMLFeedCache"
+
+Toast\XMLFeed\Feed:
+  CacheLifetime: 3600
+
