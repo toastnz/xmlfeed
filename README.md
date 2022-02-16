@@ -30,3 +30,14 @@ use Toast\XMLFeed;
 
 $feed = Feed::get($url = null, $xmlPath = null, $cacheLifetime = 300, $asArray = false, $flushCache = false);
 ```
+
+By default an ArrayList will be returned, which can be rendered directed into a template:
+
+Note: check the raw contents of the XML feed to identify fields names.
+
+```html
+<% loop $Feed %> 
+  <h1>$Headline.XML</h1>
+  <p>$Summary.XML</p>
+<% end_loop %>
+```
