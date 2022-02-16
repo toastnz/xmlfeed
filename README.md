@@ -31,7 +31,7 @@ use Toast\XMLFeed;
 $feed = Feed::get($url = null, $xmlPath = null, $cacheLifetime = 300, $asArray = false, $flushCache = false);
 ```
 
-By default an ArrayList will be returned, which can be rendered directed into a template.
+By default an ArrayList will be returned, which can be rendered directly into a template.
 
 Note: you must check the raw contents of the XML feed to identify fields names.
 
