@@ -76,36 +76,34 @@ class Feed
             }
         }
     }
+    
+    public static function arrayToViewableData($array) {
+        if(is_array($array)) {
+            $tmp = array_keys($array);
+            $assoc = ($tmp != array_keys($tmp));
+            switch($assoc) {
+                case true:
+                    $dataObject = ArrayData::create();
 
-
-	public static function arrayToViewableData($array) {
-		if(is_array($array)) {
-			$tmp = array_keys($array);
-			$assoc = ($tmp != array_keys($tmp));
-			switch($assoc) {
-				case true:
-					$dataObject = ArrayData::create();
-
-					foreach($array as $k => $v) {
-						if(is_array($v)) {
-							$dataObject->setField($k, self::arrayToViewableData($v));
-						} else {
-							$dataObject->setField($k, $v);
-						}
-					}
-					return $dataObject;
-					break;
-
-				case false:
-					$list = ArrayList::create();
-					foreach($array as $k => $v){
-						$list->push(self::arrayToViewableData($v));
-					}
-					return $list;
-					break;
-			}
-		}
-		return $array;
-	}
+                    foreach($array as $k => $v) {
+                        if(is_array($v)) {
+                            $dataObject->setField($k, self::arrayToViewableData($v));
+                        } else {
+                            $dataObject->setField($k, $v);
+                        }
+                    }
+                    return $dataObject;
+                break;
+                case false:
+                    $list = ArrayList::create();
+                    foreach($array as $k => $v) {
+                        $list->push(self::arrayToViewableData($v));
+                    }
+                    return $list;
+                break;
+            }
+        }
+        return $array;
+    }
 
 }
