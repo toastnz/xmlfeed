@@ -16,8 +16,8 @@
     }
   ],
   "require": {
-    "silverstripe/cms": "^4.3",
-    "silverstripe/framework": "^4.3",
+    "silverstripe/cms": "^4.3 || ^5.0",
+    "silverstripe/framework": "^4.3 || ^5.0",
     "composer/installers": "*"
   }
 }
